@@ -146,7 +146,7 @@ class MainWindow(pyglet.window.Window):
                 tile.set_position(*self.coords_to_pixels(x, y))
                 self.tiles.append(tile)
 
-        for creature in msg['creatures']:
+        for creature in msg['actors']:
             self.add_creature(creature)
 
     def on_player_connected_ws_received(self, msg):
@@ -203,7 +203,6 @@ class MainWindow(pyglet.window.Window):
             self.place_on_tile(None, None, defender.x, defender.y)
 
     def on_prepare_to_battle_ws_received(self, msg):
-        print('PREPARED')
         actor = self.creatures.get(msg['actor']['id'])
         if actor is None:
             return
